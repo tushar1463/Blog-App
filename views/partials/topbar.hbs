@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog Title</title>
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        .link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top {
+            background-color: black;
+            color: white;
+            width: 100%;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            z-index: 999;
+            font-family: "Josefin Sans", sans-serif;
+        }
+
+        .topLeft,
+        .topRight {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topIcon {
+            font-size: 24px;
+            margin-right: 15px;
+             color: white; /* Change icon color to white */
+            cursor: pointer;
+        }
+
+        .topCenter {
+            flex: 3;
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+        }
+
+        .topList {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .topListItem {
+            margin: 0 15px;
+            font-size: 20px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .topListItem:hover {
+            color: lightgray;
+        }
+
+        .topImg {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .topSearchIcon {
+            font-size: 20px;
+            color: #666;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="topLeft">
+            <i class="topIcon fab fa-facebook-square"></i>
+            <i class="topIcon fab fa-instagram-square"></i>
+            <i class="topIcon fab fa-pinterest-square"></i>
+            <i class="topIcon fab fa-twitter-square"></i>
+        </div>
+        <div class="topCenter">
+            <ul class="topList">
+                <li class="topListItem">
+                    <a class="link" href="/blog">Home</a>
+                </li>
+                <li class="topListItem">About</li>
+                <li class="topListItem">Contact</li>
+                
+                {{#if user}}
+                    <li class="topListItem">
+                        <a class="link" href="/blog/myblog">Myblogs</a>
+                    </li>
+                    <li class="topListItem">
+                        <a class="link" href="/blog/add-blog">Write</a>
+                    </li>
+                    <li class="topListItem"><a class="link" href="/auth/logout">Logout</a></li>
+                {{/if}}
+            </ul>
+        </div>
+        <div class="topRight">
+            {{#if user}}
+                <a class="link" href="/blog/settings">
+                    <img class="topImg" src=" https://www.clipartkey.com/mpngs/m/96-965159_transparent-login-logo-clipart-png-download-my-account.png" alt="User Profile Image">
+                </a>
+            {{else}}
+                <ul class="topList">
+                    <li class="topListItem">
+                        <a class="link" href="/auth/login">Login</a>
+                    </li>
+                    <li class="topListItem">
+                        <a class="link" href="/auth/register">Register</a>
+                    </li>
+                </ul>
+            {{/if}}
+            <i class="topSearchIcon fas fa-search"></i>
+        </div>
+    </div>
+</body>
+
+</html>
